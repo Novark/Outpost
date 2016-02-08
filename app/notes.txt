@@ -1,0 +1,16 @@
+Universe
+- Galaxy
+
+Galaxy
+- Solar System
+
+Solar System
+- World (star, planet, moon, asteroid, comet, etc...)
+- Point of interest (wreckage, wormholes, asteroid belt, signal / beacon, gravitational anomaly, etc...)
+
+World
+- Atmosphere (gasses, etc...)
+- Surface (type: rocky, barren, mountainous, forests, etc...)
+- Core
+- Climate (hot, cold, warm, cool, wet, dry, tropical, volcanic, acidic, ice)
+-

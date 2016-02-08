@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <!-- Set the base href for routing -->
+        <base href="/">
+
+        <title>Outpost</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- 1. Load stylesheets -->
+        <link rel="stylesheet" type="text/css" href="./public/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="./public/css/custom.css">
+
+        <!-- 2. Load libraries -->
+        <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+        <script src="node_modules/systemjs/dist/system.src.js"></script>
+        <script src="node_modules/rxjs/bundles/Rx.js"></script>
+        <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+        <script src="node_modules/angular2/bundles/router.dev.js"></script>
+
+        <!-- 3. Configure SystemJS -->
+        <script>
+            System.config({
+                packages: {
+                    app: {
+                        format: 'register',
+                        defaultExtension: 'js'
+                    }
+                }
+            });
+            System.import('app/main').then(null, console.error.bind(console));
+        </script>
+    </head>
+
+    <!-- 4. Display the application -->
+    <body>
+        <outpost-app>Loading...</outpost-app>
+    </body>
+</html>
