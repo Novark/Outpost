@@ -6,7 +6,7 @@ import {LogComponent} from "../log/log.component";
     template: `
         <h1>Ship Page</h1>
         <p>Ship information...</p>
-        <button type="button">Click Me!</button>
+        <button type="button" style="color: #000000;">Click Me!</button>
     `
 })
 export class ShipComponent {

@@ -1,4 +1,4 @@
-System.register(["angular2/core", "./ship/ship.component", "./log/log.component", "./ui/tabs.component", "./ui/tab.component"], function(exports_1) {
+System.register(["angular2/core", "./ship/ship.component", "./log/log.component", "./settings/settings.component", "./ui/tabs.component", "./ui/tab.component"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -10,7 +10,7 @@ System.register(["angular2/core", "./ship/ship.component", "./log/log.component"
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, ship_component_1, log_component_1, tabs_component_1, tab_component_1;
+    var core_1, ship_component_1, log_component_1, settings_component_1, tabs_component_1, tab_component_1;
     var AppComponent;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(["angular2/core", "./ship/ship.component", "./log/log.component"
             },
             function (log_component_1_1) {
                 log_component_1 = log_component_1_1;
+            },
+            function (settings_component_1_1) {
+                settings_component_1 = settings_component_1_1;
             },
             function (tabs_component_1_1) {
                 tabs_component_1 = tabs_component_1_1;
@@ -48,7 +51,7 @@ System.register(["angular2/core", "./ship/ship.component", "./log/log.component"
                     core_1.Component({
                         selector: 'outpost-app',
                         templateUrl: "./app/templates/app.html",
-                        directives: [tabs_component_1.TabsComponent, tab_component_1.TabComponent, log_component_1.LogComponent, ship_component_1.ShipComponent]
+                        directives: [tabs_component_1.TabsComponent, tab_component_1.TabComponent, log_component_1.LogComponent, ship_component_1.ShipComponent, settings_component_1.SettingsComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

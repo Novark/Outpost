@@ -19,6 +19,7 @@ interface entry {
     `
 })
 export class LogComponent {
+    //TODO: Remove this entry[] definition from the LogComponent dependency...this should be provided by a service instead - as should addEntry perhaps
     entries: entry[];
 
     constructor() {
