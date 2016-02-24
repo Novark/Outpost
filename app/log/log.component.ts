@@ -27,7 +27,7 @@ export class LogComponent {
         this.addEntry("Hello World!");
         this.addEntry("Here's another message!  " +
             "This one will be longer than the other one so that it spans multiple lines.  " +
-            "In fact, let's make it long enough to span 3 separate lines!");
+            "In fact, let's make it long enough to span 3+ separate lines!");
     }
 
     addEntry(text: string) {
