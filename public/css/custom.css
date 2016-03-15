@@ -45,6 +45,12 @@ li > a {
     outline: 0 !important;
 }
 
+/* Input Text */
+
+input {
+    color: #000000;
+}
+
 /* Buttons */
 
 .myButton.enabled {

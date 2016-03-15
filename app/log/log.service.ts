@@ -1,4 +1,4 @@
-import {Injectable, OnInit} from "angular2/core";
+import {Injectable} from "angular2/core";
 import {GlobalActionsService} from "../core/globalactions.service";
 import {PersistenceService} from "../core/persistence.service";
 
@@ -8,8 +8,8 @@ interface entry {
 }
 
 @Injectable()
-export class LogService implements OnInit {
-    entries: entry[];
+export class LogService {
+    entries: entry[] = [];
 
     constructor(
         private globalActions: GlobalActionsService,
@@ -17,11 +17,19 @@ export class LogService implements OnInit {
     ) {
         this.globalActions.saveGame.subscribe(this.saveData);
         this.globalActions.loadGame.subscribe(this.loadData);
-    }
 
-    ngOnInit() {
-        this.addEntry({"timestamp": new Date(), "text": "Hi there!"});
-        this.addEntry({"timestamp": new Date(), "text": "Hi there!"});
+        //If log-entries does not exist in localStorage, then add the key
+        var entries = this.persistenceService.getItem("log-entries");
+        if (entries == undefined) {
+            this.saveData();
+        }
+
+        this.loadData();
+        console.log("Entries: " + this.entries);
+        if (this.entries.length == 0) {
+            this.addEntry("Default Entry #1");
+            this.addEntry("Default Entry #2");
+        }
     }
 
     saveData() {
@@ -29,19 +37,22 @@ export class LogService implements OnInit {
         this.persistenceService.setItem("log-entries", this.entries);
     }
 
-    //TODO
     loadData() {
-        console.log(this.persistenceService.getItem("log-entries"));
+        var entries = this.persistenceService.getItem("log-entries");
+        entries.forEach(entry => {
+            entry["timestamp"] = new Date(entry["timestamp"]);
+        });
+        this.entries = [...entries]
     }
 
-    //TODO
-    addEntry(logEntry: entry) {
-        console.log("[" + logEntry.timestamp + "]: " + logEntry.text);
-        this.entries = [...this.entries, logEntry];
+    addEntry(text: string) {
+        let newEntry: entry = {"timestamp": new Date(), "text": text};
+        this.entries = [...this.entries, newEntry];
     }
 
-    clearLog() {
+    clearEntries() {
         this.entries = [];
+        this.saveData();
     }
 }
 

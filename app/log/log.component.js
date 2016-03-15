@@ -24,12 +24,11 @@ System.register(["angular2/core", "./log.service"], function(exports_1) {
             LogComponent = (function () {
                 function LogComponent(_logService) {
                     this._logService = _logService;
-                    this.entries = _logService.entries;
                 }
                 LogComponent = __decorate([
                     core_1.Component({
                         selector: "log",
-                        template: "\n        <div class=\"log container-fluid\">\n            <div class=\"log-entry\" *ngFor=\"#entry of entries\">\n                <div class=\"row\">\n                    <div class=\"col-md-4 nopadding\">[{{entry.timestamp.toLocaleString('en-US')}}]</div>\n                    <div class=\"col-md-8 nopadding\">{{entry.text}}</div>\n                </div>\n            </div>\n        </div>\n    "
+                        template: "\n        <div class=\"log container-fluid\">\n            <div class=\"log-entry\" *ngFor=\"#entry of _logService.entries\">\n                <div class=\"row\">\n                    <div class=\"col-md-5 nopadding\" style=\"color: #7799AA\">\n                        <!--\n                        <span class=\"glyphicon glyphicon-time\" aria-hidden=\"true\"\n                        style=\"font-size: 18px;\" data-tooltip=\"tooltip\" data-placement=\"top\" title=\"{{entry.timestamp.toLocaleString('en-US')}}\">\n                        </span>\n                        -->\n                        [{{entry.timestamp.toLocaleString('en-US')}}]\n                    </div>\n                    <div class=\"col-md-7 nopadding\" style=\"font-weight: bold\">{{entry.text}}</div>\n                </div>\n            </div>\n        </div>\n    "
                     }), 
                     __metadata('design:paramtypes', [log_service_1.LogService])
                 ], LogComponent);

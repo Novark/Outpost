@@ -1,4 +1,4 @@
-System.register(["angular2/core"], function(exports_1) {
+System.register(["angular2/core", "../log/log.service"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -10,23 +10,30 @@ System.register(["angular2/core"], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, log_service_1;
     var ShipComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (log_service_1_1) {
+                log_service_1 = log_service_1_1;
             }],
         execute: function() {
             ShipComponent = (function () {
-                function ShipComponent() {
+                function ShipComponent(_logService) {
+                    this._logService = _logService;
                 }
+                ShipComponent.prototype.doClick = function () {
+                    this._logService.addEntry("Hello from the Ship!");
+                };
                 ShipComponent = __decorate([
                     core_1.Component({
                         selector: 'ship',
-                        template: "\n        <h1>Ship Page</h1>\n        <p>Ship information...</p>\n        <button type=\"button\" style=\"color: #000000;\">Click Me!</button>\n    "
+                        template: "\n        <h1>Ship Page</h1>\n        <p>Ship information...</p>\n        <button type=\"button\" style=\"color: #000000;\" (click)=\"doClick()\">Click Me!</button>\n    "
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [log_service_1.LogService])
                 ], ShipComponent);
                 return ShipComponent;
             })();

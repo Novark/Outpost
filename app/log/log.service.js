@@ -31,24 +31,35 @@ System.register(["angular2/core", "../core/globalactions.service", "../core/pers
                     this.entries = [];
                     this.globalActions.saveGame.subscribe(this.saveData);
                     this.globalActions.loadGame.subscribe(this.loadData);
-                    this.addEntry({ "timestamp": new Date(), "text": "Hi there!" });
-                    this.addEntry({ "timestamp": new Date(), "text": "Hello again!" });
+                    //If log-entries does not exist in localStorage, then add the key
+                    var entries = this.persistenceService.getItem("log-entries");
+                    if (entries == undefined) {
+                        this.saveData();
+                    }
+                    this.loadData();
+                    console.log("Loaded Entries: " + this.entries);
+                    if (this.entries.length == 0) {
+                        this.addEntry("Default Entry #1");
+                        this.addEntry("Default Entry #2");
+                    }
                 }
                 LogService.prototype.saveData = function () {
-                    console.log("Entries: " + this.entries);
                     this.persistenceService.setItem("log-entries", this.entries);
                 };
-                //TODO
                 LogService.prototype.loadData = function () {
-                    console.log(this.persistenceService.getItem("log-entries"));
+                    var entries = this.persistenceService.getItem("log-entries");
+                    entries.forEach(function (entry) {
+                        entry["timestamp"] = new Date(entry["timestamp"]);
+                    });
+                    this.entries = entries.slice();
                 };
-                //TODO
-                LogService.prototype.addEntry = function (logEntry) {
-                    console.log("[" + logEntry.timestamp + "]: " + logEntry.text);
-                    this.entries = this.entries.concat([logEntry]);
+                LogService.prototype.addEntry = function (text) {
+                    var newEntry = { "timestamp": new Date(), "text": text };
+                    this.entries = this.entries.concat([newEntry]);
                 };
-                LogService.prototype.clearLog = function () {
+                LogService.prototype.clearEntries = function () {
                     this.entries = [];
+                    this.saveData();
                 };
                 LogService = __decorate([
                     core_1.Injectable(), 
